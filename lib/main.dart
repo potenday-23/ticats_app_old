@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:ticats/app/config/app_theme.dart';
 
 void main() {
   runApp(
@@ -12,8 +13,9 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
+    return MaterialApp(
+      theme: AppTheme.defaultTheme,
+      home: const Scaffold(
         body: Center(
           child: Text('Hello World!'),
         ),
