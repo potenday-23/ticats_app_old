@@ -4,6 +4,9 @@ import 'package:ticats/app/config/app_color.dart';
 import 'package:ticats/app/config/app_grayscale.dart';
 import 'package:ticats/app/config/app_radius.dart';
 import 'package:ticats/app/config/app_typeface.dart';
+import 'package:widgetbook/widgetbook.dart';
+
+import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
 enum ButtonType { primary, secondary }
 
@@ -95,4 +98,33 @@ class TicatsCTAButton extends StatelessWidget {
       ),
     );
   }
+}
+
+@widgetbook.UseCase(
+  name: "Contained",
+  type: TicatsCTAButton,
+  path: "[Ticats]/Button",
+)
+TicatsCTAButton containedButton(BuildContext context) {
+  return TicatsCTAButton.contained(
+    size: context.knobs.list<ButtonSize>(label: "Size", options: ButtonSize.values, initialOption: ButtonSize.medium),
+    type: context.knobs.list<ButtonType>(label: "Type", options: ButtonType.values, initialOption: ButtonType.primary),
+    isEnabled: context.knobs.boolean(label: "Enabled", initialValue: true),
+    text: "다음",
+    onPressed: () {},
+  );
+}
+
+@widgetbook.UseCase(
+  name: "Outlined",
+  type: TicatsCTAButton,
+  path: "[Ticats]/Button",
+)
+TicatsCTAButton outlinedButton(BuildContext context) {
+  return TicatsCTAButton.outlined(
+    size: context.knobs.list<ButtonSize>(label: "Size", options: ButtonSize.values, initialOption: ButtonSize.medium),
+    isEnabled: context.knobs.boolean(label: "Enabled", initialValue: true),
+    text: "다음",
+    onPressed: () {},
+  );
 }

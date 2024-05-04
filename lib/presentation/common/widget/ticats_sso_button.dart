@@ -3,6 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ticats/app/config/app_radius.dart';
 import 'package:ticats/app/config/app_typeface.dart';
+import 'package:widgetbook/widgetbook.dart';
+
+import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
 enum SSOType {
   kakao("카카오", "kakao", Color(0xFFFFE300)),
@@ -52,4 +55,17 @@ class TicatsSSOButton extends StatelessWidget {
       ),
     );
   }
+}
+
+@widgetbook.UseCase(
+  name: "SSO",
+  type: TicatsSSOButton,
+  path: "[Ticats]/Button",
+)
+TicatsSSOButton enabledContainedButton(BuildContext context) {
+  return TicatsSSOButton(
+    type: context.knobs.list(label: "SSO Type", options: SSOType.values, initialOption: SSOType.kakao),
+    hasIcon: context.knobs.boolean(label: "Icon", initialValue: true),
+    onPressed: () {},
+  );
 }
