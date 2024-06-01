@@ -49,7 +49,7 @@ class TicatsSSOButton extends StatelessWidget {
               ),
               SizedBox(width: 8.w),
             ],
-            Text("${type.korName} 로그인", style: AppTypeface().body18Semibold),
+            Text("${type.korName} 로그인", style: AppTypeface.body18Semibold),
           ],
         ),
       ),

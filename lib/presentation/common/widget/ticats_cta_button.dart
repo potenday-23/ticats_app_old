@@ -93,8 +93,8 @@ class TicatsCTAButton extends StatelessWidget {
         ),
         child: Text(text,
             style: size == ButtonSize.medium
-                ? AppTypeface().label16Semibold.copyWith(color: textColor)
-                : AppTypeface().label14Medium.copyWith(color: textColor)),
+                ? AppTypeface.label16Semibold.copyWith(color: textColor)
+                : AppTypeface.label14Medium.copyWith(color: textColor)),
       ),
     );
   }
