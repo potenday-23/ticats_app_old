@@ -1,5 +1,5 @@
-# Created by https://www.toptal.com/developers/gitignore/api/dart,macos,flutter,intellij,visualstudiocode
-# Edit at https://www.toptal.com/developers/gitignore?templates=dart,macos,flutter,intellij,visualstudiocode
+# Created by https://www.toptal.com/developers/gitignore/api/dart,flutter,visualstudiocode,macos,intellij
+# Edit at https://www.toptal.com/developers/gitignore?templates=dart,flutter,visualstudiocode,macos,intellij
 
 ### Dart ###
 # See https://www.dartlang.org/guides/libraries/private-files
@@ -93,20 +93,20 @@ lib/generated_plugin_registrant.dart
 !**/ios/**/default.perspectivev3
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
 
-# Generated Files
+# Generated Code
 **/*.auto_mappr.dart
+**/*.config.dart
 **/*.freezed.dart
 **/*.g.dart
+
+# FlutterGen
+**/lib/gen/
+
+*.log
 
 ### Intellij ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
-
-# IntelliJ related
-*.iml
-*.ipr
-*.iws
-.idea/
 
 # User-specific stuff
 .idea/**/workspace.xml
@@ -144,8 +144,9 @@ lib/generated_plugin_registrant.dart
 # .idea/modules.xml
 # .idea/*.iml
 # .idea/modules
-# *.iml
-# *.ipr
+*.iml
+*.ipr
+.idea/
 
 # CMake
 cmake-build-*/
@@ -269,4 +270,4 @@ Temporary Items
 .history
 .ionide
 
-# End of https://www.toptal.com/developers/gitignore/api/dart,macos,flutter,intellij,visualstudiocode
+# End of https://www.toptal.com/developers/gitignore/api/dart,flutter,visualstudiocode,macos,intellij
