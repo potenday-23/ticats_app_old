@@ -1,7 +1,7 @@
 import '../repositories/auth_repository.dart';
 
-class AuthUseCase {
-  final AuthRepository repository;
+class AuthUseCases {
+  AuthUseCases({required AuthRepository repository}) : _repository = repository;
 
-  AuthUseCase(this.repository);
+  final AuthRepository _repository;
 }
