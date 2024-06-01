@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:ticats/presentation/common/base/base_page.dart';
 
-class MainPage extends ConsumerWidget {
+class MainPage extends BasePage {
   const MainPage({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget buildPage(BuildContext context, WidgetRef ref) {
     return Container();
   }
 }
