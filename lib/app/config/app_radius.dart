@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class AppRadius {
+abstract class AppRadius {
+  AppRadius._();
+
   static BorderRadius none = BorderRadius.zero;
   static BorderRadius xxsmall = BorderRadius.circular(6.r);
   static BorderRadius xsmall = BorderRadius.circular(8.r);

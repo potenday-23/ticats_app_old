@@ -3,7 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:ticats/app/config/app_grayscale.dart';
 
-class AppTheme {
+abstract class AppTheme {
+  AppTheme._();
+
   static final ThemeData defaultTheme = ThemeData(
     fontFamily: 'SUIT',
     appBarTheme: AppBarTheme(

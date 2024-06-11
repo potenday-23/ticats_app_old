@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
-class AppGrayscale {
+abstract class AppGrayscale {
+  AppGrayscale._();
+
   static const Color gray99 = Color(0xFFFCFBFC);
   static const Color gray95 = Color(0xFFF6F5F6);
   static const Color gray90 = Color(0xFFF2F1F2);
