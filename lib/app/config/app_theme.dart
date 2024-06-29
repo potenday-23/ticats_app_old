@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import 'package:ticats/app/config/app_grayscale.dart';
+import 'package:ticats/app/index.dart';
 
 abstract class AppTheme {
   AppTheme._();

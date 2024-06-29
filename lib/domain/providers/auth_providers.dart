@@ -1,11 +1,7 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-
-import 'package:ticats/app/network/builder/dio_provider.dart';
-import 'package:ticats/data/data_sources/remote/auth_api.dart';
-import 'package:ticats/data/repositories_impl/auth_repository_impl.dart';
-
-import '../repositories/auth_repository.dart';
-import '../usecases/auth_usecases.dart';
+import 'package:ticats/app/index.dart';
+import 'package:ticats/data/index.dart';
+import 'package:ticats/domain/index.dart';
 
 part 'auth_providers.g.dart';
 
