@@ -25,7 +25,7 @@ class LoginPage extends BasePage {
             SizedBox(height: 160.h),
             Text("쌓여있는 티켓,\n이제부터 티캣츠로 정리하세요!", style: AppTypeface.headline24Bold),
             SizedBox(height: 60.h),
-            const _LoginButtons(),
+            const LoginButtonsView(),
           ],
         ),
       ),
@@ -34,24 +34,4 @@ class LoginPage extends BasePage {
 
   @override
   bool get wrapWithSafeArea => false;
-}
-
-class _LoginButtons extends ConsumerWidget {
-  const _LoginButtons();
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20.w),
-      child: Column(
-        children: [
-          TicatsSSOButton(type: SSOType.kakao, onPressed: () {}),
-          SizedBox(height: 16.h),
-          TicatsSSOButton(type: SSOType.google, onPressed: () {}),
-          SizedBox(height: 16.h),
-          TicatsSSOButton(type: SSOType.apple, onPressed: () {}),
-        ],
-      ),
-    );
-  }
 }

@@ -11,6 +11,10 @@ class RoutePath {
 
   // Auth
   static const String login = '/login';
+
+  // Sign In
+  static const String signIn = '/sign_in';
+  static const String registerProfile = 'register_profile';
 }
 
 final rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -33,6 +37,19 @@ class Router extends _$Router {
         GoRoute(
           path: RoutePath.login,
           builder: (context, state) => const LoginPage(),
+        ),
+
+        // Sign In
+        GoRoute(
+          path: RoutePath.signIn,
+          builder: (context, state) => const Placeholder(),
+          routes: [
+            GoRoute(
+              path: RoutePath.registerProfile,
+              name: RoutePath.registerProfile,
+              builder: (context, state) => const RegisterProfilePage(),
+            ),
+          ],
         ),
       ],
     );
