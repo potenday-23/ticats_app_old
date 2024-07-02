@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ticats/app/index.dart';
 import 'package:ticats/gen/assets.gen.dart';
 import 'package:ticats/presentation/index.dart';
 
@@ -25,7 +26,9 @@ class RegisterProfilePage extends BasePage {
                 TicatsCTAButton.contained(
                   size: ButtonSize.large,
                   text: "다음",
-                  onPressed: () {},
+                  onPressed: () {
+                    ref.read(routerProvider).pushNamed(RoutePath.registerAccount);
+                  },
                 ),
                 SizedBox(height: 13.h),
               ],

@@ -14,6 +14,7 @@ class RoutePath {
 
   // Sign In
   static const String signIn = '/sign_in';
+  static const String registerAccount = 'register_account';
   static const String registerProfile = 'register_profile';
 }
 
@@ -44,6 +45,11 @@ class Router extends _$Router {
           path: RoutePath.signIn,
           builder: (context, state) => const Placeholder(),
           routes: [
+            GoRoute(
+              path: RoutePath.registerAccount,
+              name: RoutePath.registerAccount,
+              builder: (context, state) => const RegisterAccountPage(),
+            ),
             GoRoute(
               path: RoutePath.registerProfile,
               name: RoutePath.registerProfile,

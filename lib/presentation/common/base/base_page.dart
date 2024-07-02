@@ -112,7 +112,7 @@ abstract class BasePage extends HookConsumerWidget {
   bool get setTopSafeArea => true;
 
   @protected
-  bool get preventAutoUnfocus => true;
+  bool get preventAutoUnfocus => false;
 
   @protected
   void onResumed(WidgetRef ref) {}

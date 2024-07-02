@@ -15,7 +15,10 @@ class NickInputView extends ConsumerWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(height: 10.h),
-        Text("닉네임", style: AppTypeface.label16Semibold.copyWith(color: AppColor.black)),
+        Padding(
+          padding: EdgeInsets.only(left: 8.w),
+          child: Text("닉네임", style: AppTypeface.label16Semibold.copyWith(color: AppColor.black)),
+        ),
         SizedBox(height: 10.h),
         TicatsBorderTextField(
           hintText: "티케팅하는 고양이",

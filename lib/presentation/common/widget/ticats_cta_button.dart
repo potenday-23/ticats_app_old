@@ -40,7 +40,7 @@ class TicatsCTAButton extends StatelessWidget {
     final Color textColor;
 
     if (type == ButtonType.primary) {
-      color = isEnabled ? AppColor.primaryLight : AppGrayscale.gray70;
+      color = isEnabled ? AppColor.primaryNormal : AppGrayscale.gray70;
       textColor = AppColor.white;
     } else {
       color = isEnabled ? AppGrayscale.gray95 : AppGrayscale.gray85;
@@ -67,7 +67,7 @@ class TicatsCTAButton extends StatelessWidget {
       isEnabled: isEnabled,
       size: size,
       text: text,
-      border: Border.all(width: 1.w, color: isEnabled ? AppColor.primaryLight : AppGrayscale.gray70),
+      border: Border.all(width: 1.w, color: isEnabled ? AppColor.primaryNormal : AppGrayscale.gray70),
       color: isEnabled ? AppGrayscale.gray99 : AppGrayscale.gray90,
       textColor: isEnabled ? AppColor.black : AppGrayscale.gray60,
       onPressed: onPressed,
