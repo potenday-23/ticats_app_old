@@ -34,7 +34,9 @@ class PermissionAgreePage extends BasePage {
           SizedBox(height: 36.h),
           TicatsCTAButton.contained(
             text: "동의하고 시작하기",
-            onPressed: () {},
+            onPressed: () {
+              ref.read(routerProvider).push(RoutePath.selectEntertainment);
+            },
           ),
         ],
       ),

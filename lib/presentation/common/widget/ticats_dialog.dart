@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ticats/app/index.dart';
+import 'package:ticats/gen/assets.gen.dart';
 
 showTicatsDialog(
   BuildContext context, {
@@ -34,6 +35,38 @@ showTicatsTwoButtonDialog(
     builder: (context) {
       return Dialog(
         child: _TicatsTwoButtonDialog(child, text: text, onPressed: onPressed),
+      );
+    },
+  );
+}
+
+showTicatsWelcomeDialog(BuildContext context) {
+  showDialog(
+    context: context,
+    barrierDismissible: false,
+    builder: (context) {
+      final BuildContext storedContext = context;
+
+      Future.delayed(const Duration(seconds: 3), () {
+        if (Navigator.canPop(storedContext)) {
+          Navigator.pop(storedContext);
+        }
+      });
+
+      return Dialog(
+        child: Container(
+          width: MediaQuery.of(context).size.width,
+          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 24.h),
+          decoration: BoxDecoration(color: Colors.white, borderRadius: AppRadius.large),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text("티캣츠에 오신 것을 환영합니다!", style: AppTypeface.body18Bold),
+              SizedBox(height: 16.h),
+              Assets.images.celebrate.svg(width: 100.w, height: 100.w),
+            ],
+          ),
+        ),
       );
     },
   );

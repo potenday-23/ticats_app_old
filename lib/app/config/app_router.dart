@@ -15,6 +15,9 @@ class RoutePath {
   // Permission
   static const String permissionAgree = '/permission_agree';
 
+  // Select Entertainment
+  static const String selectEntertainment = '/select_entertainment';
+
   // Sign In
   static const String signIn = '/sign_in';
   static const String registerAccount = 'register_account';
@@ -47,6 +50,12 @@ class Router extends _$Router {
         GoRoute(
           path: RoutePath.permissionAgree,
           builder: (context, state) => PermissionAgreePage(),
+        ),
+
+        // Select Entertainment
+        GoRoute(
+          path: RoutePath.selectEntertainment,
+          builder: (context, state) => const SelectEntertainmentPage(),
         ),
 
         // Sign In

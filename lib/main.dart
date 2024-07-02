@@ -1,3 +1,4 @@
+import 'package:flash/flash_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -26,7 +27,9 @@ class MainApp extends ConsumerWidget {
         return MaterialApp.router(
           routerConfig: router,
           theme: AppTheme.defaultTheme,
-          builder: EasyLoading.init(),
+          builder: EasyLoading.init(
+            builder: (context, child) => Toast(navigatorKey: rootNavigatorKey, child: child!),
+          ),
         );
       },
     );

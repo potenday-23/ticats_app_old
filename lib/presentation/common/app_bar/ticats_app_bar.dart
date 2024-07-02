@@ -14,12 +14,15 @@ class TicatsAppBar extends ConsumerWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return AppBar(
+      automaticallyImplyLeading: false,
       title: Text(title, style: AppTypeface.label16Semibold),
-      leading: IconButton(
-        icon: const Icon(Icons.arrow_back_ios_new),
-        onPressed: () => ref.read(routerProvider).pop(),
-      ),
-      leadingWidth: 60.w,
+      leading: hasBack
+          ? IconButton(
+              icon: const Icon(Icons.arrow_back_ios_new),
+              onPressed: () => ref.read(routerProvider).pop(),
+            )
+          : null,
+      leadingWidth: hasBack ? 60.w : null,
     );
   }
 
