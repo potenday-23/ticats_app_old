@@ -11,6 +11,7 @@ export 'common/widget/ticats_dialog.dart';
 export 'common/widget/ticats_sso_button.dart';
 export 'common/widget/ticats_underline_text_field.dart';
 export 'main/view/main_page.dart';
+export 'permission/permission_agree_page.dart';
 export 'sign_in/register_account_page.dart';
 export 'sign_in/register_profile_page.dart';
 export 'sign_in/view/account_input_view.dart';

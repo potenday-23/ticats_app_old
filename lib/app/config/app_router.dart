@@ -12,6 +12,9 @@ class RoutePath {
   // Auth
   static const String login = '/login';
 
+  // Permission
+  static const String permissionAgree = '/permission_agree';
+
   // Sign In
   static const String signIn = '/sign_in';
   static const String registerAccount = 'register_account';
@@ -38,6 +41,12 @@ class Router extends _$Router {
         GoRoute(
           path: RoutePath.login,
           builder: (context, state) => const LoginPage(),
+        ),
+
+        // Permission
+        GoRoute(
+          path: RoutePath.permissionAgree,
+          builder: (context, state) => PermissionAgreePage(),
         ),
 
         // Sign In

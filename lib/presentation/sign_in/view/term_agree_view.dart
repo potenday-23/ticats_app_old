@@ -43,7 +43,9 @@ class TermAgreeView extends ConsumerWidget {
                     textAlign: TextAlign.center,
                   ),
                   text: "알림 받기",
-                  onPressed: () {},
+                  onPressed: () {
+                    ref.read(routerProvider).push(RoutePath.permissionAgree);
+                  },
                 );
               },
               size: ButtonSize.large,

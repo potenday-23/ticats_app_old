@@ -67,7 +67,7 @@ class _TicatsDialog extends ConsumerWidget {
           ),
           GestureDetector(
             behavior: HitTestBehavior.translucent,
-            onTap: () {},
+            onTap: onPressed,
             child: Container(
               decoration: BoxDecoration(
                 color: AppColor.primaryNormal,
@@ -139,7 +139,7 @@ class _TicatsTwoButtonDialog extends ConsumerWidget {
               Flexible(
                 child: GestureDetector(
                   behavior: HitTestBehavior.translucent,
-                  onTap: () {},
+                  onTap: onPressed,
                   child: Container(
                     decoration: BoxDecoration(
                       color: AppColor.primaryNormal,
