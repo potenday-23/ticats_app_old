@@ -7,6 +7,7 @@ export 'config/app_theme.dart';
 export 'config/app_typeface.dart';
 export 'enum/term_enum.dart';
 export 'enum/text_field_status.dart';
+export 'enum/ticats_event_status.dart';
 export 'network/builder/dio_provider.dart';
 export 'network/interceptor/error_interceptor.dart';
 export 'network/interceptor/token_interceptor.dart';

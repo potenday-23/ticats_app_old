@@ -24,4 +24,5 @@ abstract class AppColor {
   static const Color positiveBlueBg = Color(0xFFEDF3FF);
   static const Color error = Color(0xFFEB271C);
   static const Color errorBg = Color(0xFFFFEDF0);
+  static const Color systemError = Color(0xFFF74865);
 }

@@ -15,6 +15,10 @@ class RoutePath {
   // Permission
   static const String permissionAgree = '/permission_agree';
 
+  // Search
+  static const String search = '/search';
+  static const String searchResult = 'result';
+
   // Select Entertainment
   static const String selectEntertainment = '/select_entertainment';
 
@@ -52,10 +56,23 @@ class Router extends _$Router {
           builder: (context, state) => PermissionAgreePage(),
         ),
 
+        // Search
+        GoRoute(
+          path: RoutePath.search,
+          builder: (context, state) => SearchPage(),
+          routes: [
+            GoRoute(
+              path: RoutePath.searchResult,
+              name: RoutePath.searchResult,
+              builder: (context, state) => const SearchResultPage(),
+            ),
+          ],
+        ),
+
         // Select Entertainment
         GoRoute(
           path: RoutePath.selectEntertainment,
-          builder: (context, state) => const SelectEntertainmentPage(),
+          builder: (context, state) => SelectEntertainmentPage(),
         ),
 
         // Sign In
