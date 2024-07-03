@@ -1,8 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-
-import '../../config/app_const.dart';
-import '../interceptor/error_interceptor.dart';
+import 'package:ticats/app/index.dart';
 
 part 'dio_provider.g.dart';
 

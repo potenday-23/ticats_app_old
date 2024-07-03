@@ -9,6 +9,7 @@ environment:
 dependencies:
   cached_network_image: ^3.3.1
   dio: ^5.4.3+1
+  flash: ^3.1.1
   flutter:
     sdk: flutter
   flutter_easyloading: ^3.0.5
@@ -21,6 +22,7 @@ dependencies:
   go_router: ^14.1.4
   hooks_riverpod: ^2.5.1
   json_annotation: ^4.9.0
+  modal_bottom_sheet: ^3.0.0
   retrofit: ^4.1.0
   riverpod_annotation: ^2.3.5
   widgetbook: ^3.7.1
@@ -50,7 +52,9 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/icons/logo/
+    - assets/icons/
+    - assets/images/
+    - assets/logos/
 
   fonts:
     - family: SUIT

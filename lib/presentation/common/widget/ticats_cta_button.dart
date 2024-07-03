@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ticats/app/config/app_color.dart';
-import 'package:ticats/app/config/app_grayscale.dart';
-import 'package:ticats/app/config/app_radius.dart';
-import 'package:ticats/app/config/app_typeface.dart';
+import 'package:ticats/app/index.dart';
 import 'package:widgetbook/widgetbook.dart';
 
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
 enum ButtonType { primary, secondary }
 
-enum ButtonSize { small, medium }
+enum ButtonSize { small, medium, large }
 
 class TicatsCTAButton extends StatelessWidget {
   const TicatsCTAButton({
@@ -43,7 +40,7 @@ class TicatsCTAButton extends StatelessWidget {
     final Color textColor;
 
     if (type == ButtonType.primary) {
-      color = isEnabled ? AppColor.primaryLight : AppGrayscale.gray70;
+      color = isEnabled ? AppColor.primaryNormal : AppGrayscale.gray70;
       textColor = AppColor.white;
     } else {
       color = isEnabled ? AppGrayscale.gray95 : AppGrayscale.gray85;
@@ -70,7 +67,7 @@ class TicatsCTAButton extends StatelessWidget {
       isEnabled: isEnabled,
       size: size,
       text: text,
-      border: Border.all(width: 1.w, color: isEnabled ? AppColor.primaryLight : AppGrayscale.gray70),
+      border: Border.all(width: 1.w, color: isEnabled ? AppColor.primaryNormal : AppGrayscale.gray70),
       color: isEnabled ? AppGrayscale.gray99 : AppGrayscale.gray90,
       textColor: isEnabled ? AppColor.black : AppGrayscale.gray60,
       onPressed: onPressed,
@@ -79,22 +76,30 @@ class TicatsCTAButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: isEnabled ? onPressed : null,
-      behavior: HitTestBehavior.translucent,
-      child: Container(
-        padding: size == ButtonSize.medium
-            ? EdgeInsets.symmetric(horizontal: 24.w, vertical: 14.w)
-            : EdgeInsets.symmetric(horizontal: 20.w, vertical: 8.w),
-        decoration: BoxDecoration(
-          border: border,
-          borderRadius: AppRadius.small,
-          color: color,
+    final EdgeInsets padding = size == ButtonSize.large || size == ButtonSize.medium
+        ? EdgeInsets.symmetric(horizontal: 24.w, vertical: 14.w)
+        : EdgeInsets.symmetric(horizontal: 20.w, vertical: 8.w);
+
+    final TextStyle textStyle = size == ButtonSize.large
+        ? AppTypeface.label20Bold.copyWith(color: textColor)
+        : size == ButtonSize.medium
+            ? AppTypeface.label16Semibold.copyWith(color: textColor)
+            : AppTypeface.label14Medium.copyWith(color: textColor);
+
+    return SizedBox(
+      width: size == ButtonSize.large ? double.maxFinite : null,
+      child: GestureDetector(
+        onTap: isEnabled ? onPressed : null,
+        behavior: HitTestBehavior.translucent,
+        child: Container(
+          padding: padding,
+          decoration: BoxDecoration(
+            border: border,
+            borderRadius: AppRadius.small,
+            color: color,
+          ),
+          child: Center(child: Text(text, style: textStyle)),
         ),
-        child: Text(text,
-            style: size == ButtonSize.medium
-                ? AppTypeface.label16Semibold.copyWith(color: textColor)
-                : AppTypeface.label14Medium.copyWith(color: textColor)),
       ),
     );
   }
