@@ -5,6 +5,7 @@ export 'config/app_radius.dart';
 export 'config/app_router.dart';
 export 'config/app_theme.dart';
 export 'config/app_typeface.dart';
+export 'enum/login_provider.dart';
 export 'enum/term_enum.dart';
 export 'enum/text_field_status.dart';
 export 'enum/ticats_event_status.dart';

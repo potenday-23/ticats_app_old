@@ -27,7 +27,12 @@ class LoginButtonsView extends ConsumerWidget {
             },
           ),
           SizedBox(height: 16.h),
-          TicatsSSOButton(type: SSOType.apple, onPressed: () {}),
+          TicatsSSOButton(
+            type: SSOType.apple,
+            onPressed: () async {
+              await ref.read(authServiceProvider.notifier).login(LoginProvider.apple);
+            },
+          ),
         ],
       ),
     );
