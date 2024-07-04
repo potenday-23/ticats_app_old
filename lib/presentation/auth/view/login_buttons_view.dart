@@ -22,8 +22,8 @@ class LoginButtonsView extends ConsumerWidget {
           SizedBox(height: 16.h),
           TicatsSSOButton(
             type: SSOType.google,
-            onPressed: () {
-              ref.read(routerProvider).push(RoutePath.search);
+            onPressed: () async {
+              await ref.read(authServiceProvider.notifier).login(LoginProvider.google);
             },
           ),
           SizedBox(height: 16.h),
