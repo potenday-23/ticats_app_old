@@ -15,8 +15,8 @@ class LoginButtonsView extends ConsumerWidget {
         children: [
           TicatsSSOButton(
             type: SSOType.kakao,
-            onPressed: () {
-              ref.read(routerProvider).pushNamed(RoutePath.registerProfile);
+            onPressed: () async {
+              await ref.read(authServiceProvider.notifier).login(LoginProvider.kakao);
             },
           ),
           SizedBox(height: 16.h),
