@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ticats/app/index.dart';
+import 'package:ticats/domain/entities/state/term_agree_state.dart';
+import 'package:ticats/domain/index.dart';
 import 'package:ticats/gen/assets.gen.dart';
 import 'package:ticats/presentation/index.dart';
 
@@ -23,7 +25,7 @@ class SelectEntertainmentPage extends BasePage {
             SizedBox(height: 36.h),
             _buildEntertainmentOptions(coverSize),
             SizedBox(height: 40.h),
-            _buildStartButton(context),
+            _buildStartButton(context, ref),
             SizedBox(height: 20.h),
             _buildSkipButton(context),
           ],
@@ -79,10 +81,17 @@ class SelectEntertainmentPage extends BasePage {
     );
   }
 
-  Widget _buildStartButton(BuildContext context) {
+  Widget _buildStartButton(BuildContext context, WidgetRef ref) {
     return TicatsCTAButton.contained(
       text: "티캣츠 시작하기",
-      onPressed: () {
+      onPressed: () async {
+        MemberInfoEntity memberInfo = ref.read(signInProvider);
+        memberInfo = memberInfo.copyWith(isMarketingAgree: ref.read(termAgreeProvider).checkMarketing);
+        print(memberInfo);
+
+        print(await ref.read(authUseCasesProvider).setUserInfo.execute(memberInfo));
+
+        if (!context.mounted) return;
         showTicatsWelcomeDialog(context);
       },
     );

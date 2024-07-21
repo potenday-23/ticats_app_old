@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:ticats/app/index.dart';
 import 'package:ticats/presentation/index.dart';
 
 class RegisterAccountPage extends BasePage {
@@ -8,6 +9,10 @@ class RegisterAccountPage extends BasePage {
 
   @override
   Widget buildPage(BuildContext context, WidgetRef ref) {
+    final signInProv = ref.watch(signInProvider);
+
+    final bool canSignUp = signInProv.email!.isValidEmail() && signInProv.birthday != null && signInProv.gender!.isNotEmpty;
+
     return CustomScrollView(
       primary: false,
       slivers: [
@@ -20,6 +25,7 @@ class RegisterAccountPage extends BasePage {
                 const SelectGenderView(),
                 const Spacer(),
                 TicatsCTAButton.contained(
+                  isEnabled: canSignUp,
                   size: ButtonSize.large,
                   text: "다음",
                   onPressed: () {

@@ -13,3 +13,4 @@ export 'network/builder/dio_provider.dart';
 export 'network/interceptor/error_interceptor.dart';
 export 'network/interceptor/token_interceptor.dart';
 export 'service/auth_service.dart';
+export 'util/input_validate.dart';

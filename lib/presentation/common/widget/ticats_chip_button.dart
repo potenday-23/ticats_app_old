@@ -6,11 +6,13 @@ class TicatsChipButton extends StatelessWidget {
   const TicatsChipButton({
     super.key,
     this.isEnabled = true,
+    this.isSelected = false,
     required this.text,
     required this.onPressed,
   });
 
   final bool isEnabled;
+  final bool isSelected;
   final String text;
 
   final VoidCallback onPressed;
@@ -26,10 +28,10 @@ class TicatsChipButton extends StatelessWidget {
           padding: EdgeInsets.symmetric(vertical: 11.w),
           decoration: BoxDecoration(
             borderRadius: AppRadius.medium,
-            color: isEnabled ? AppColor.primaryNormal : AppGrayscale.gray99,
+            color: isSelected ? AppColor.primaryNormal : AppGrayscale.gray99,
           ),
           child: Center(
-            child: Text(text, style: AppTypeface.label16Bold.copyWith(color: isEnabled ? AppColor.white : AppGrayscale.gray40)),
+            child: Text(text, style: AppTypeface.label16Bold.copyWith(color: isSelected ? AppColor.white : AppGrayscale.gray40)),
           ),
         ),
       ),

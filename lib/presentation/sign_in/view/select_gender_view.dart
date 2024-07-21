@@ -9,6 +9,9 @@ class SelectGenderView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final signInProv = ref.watch(signInProvider);
+    final signInProvNotifier = ref.watch(signInProvider.notifier);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -21,16 +24,21 @@ class SelectGenderView extends ConsumerWidget {
           children: [
             Expanded(
               child: TicatsChipButton(
+                isSelected: signInProv.gender == "MALE",
                 text: "남",
-                onPressed: () {},
+                onPressed: () {
+                  signInProvNotifier.setMember(signInProv.copyWith(gender: "MALE"));
+                },
               ),
             ),
             SizedBox(width: 14.w),
             Expanded(
               child: TicatsChipButton(
-                isEnabled: false,
+                isSelected: signInProv.gender == "FEMALE",
                 text: "여",
-                onPressed: () {},
+                onPressed: () {
+                  signInProvNotifier.setMember(signInProv.copyWith(gender: "FEMALE"));
+                },
               ),
             ),
           ],
