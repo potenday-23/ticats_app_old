@@ -22,6 +22,7 @@ export 'search/search_result_page.dart';
 export 'search/view/search_result_empty_view.dart';
 export 'search/view/search_result_view.dart';
 export 'select_entertainment/select_entertainment_page.dart';
+export 'sign_in/provider/sign_in_provider.dart';
 export 'sign_in/register_account_page.dart';
 export 'sign_in/register_profile_page.dart';
 export 'sign_in/view/account_input_view.dart';

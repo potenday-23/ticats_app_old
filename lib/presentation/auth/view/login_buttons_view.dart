@@ -15,19 +15,24 @@ class LoginButtonsView extends ConsumerWidget {
         children: [
           TicatsSSOButton(
             type: SSOType.kakao,
-            onPressed: () {
-              ref.read(routerProvider).pushNamed(RoutePath.registerProfile);
+            onPressed: () async {
+              await ref.read(authServiceProvider.notifier).login(LoginProvider.kakao);
             },
           ),
           SizedBox(height: 16.h),
           TicatsSSOButton(
             type: SSOType.google,
-            onPressed: () {
-              ref.read(routerProvider).push(RoutePath.search);
+            onPressed: () async {
+              await ref.read(authServiceProvider.notifier).login(LoginProvider.google);
             },
           ),
           SizedBox(height: 16.h),
-          TicatsSSOButton(type: SSOType.apple, onPressed: () {}),
+          TicatsSSOButton(
+            type: SSOType.apple,
+            onPressed: () async {
+              await ref.read(authServiceProvider.notifier).login(LoginProvider.apple);
+            },
+          ),
         ],
       ),
     );

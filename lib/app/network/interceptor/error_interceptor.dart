@@ -9,7 +9,9 @@ class ErrorInterceptor extends QueuedInterceptor {
   void onError(DioException err, ErrorInterceptorHandler handler) async {
     if (kDebugMode) print('onError ErrorInterceptor ${err.requestOptions.uri}');
 
-    EasyLoading.showToast("Error: ${err.response!.data}", toastPosition: EasyLoadingToastPosition.bottom);
+    if (err.requestOptions.headers['showError'] != 'false') {
+      EasyLoading.showToast("Error: ${err.response!.data}", toastPosition: EasyLoadingToastPosition.bottom);
+    }
 
     handler.next(err);
   }

@@ -2,14 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ticats/app/index.dart';
+import 'package:ticats/domain/index.dart';
 import 'package:ticats/gen/assets.gen.dart';
 import 'package:ticats/presentation/index.dart';
 
 class RegisterProfilePage extends BasePage {
-  const RegisterProfilePage({super.key});
+  const RegisterProfilePage({super.key, this.extra});
+
+  final Map<String, dynamic>? extra;
 
   @override
   Widget buildPage(BuildContext context, WidgetRef ref) {
+    ref.watch(signInProvider.notifier);
+
     return CustomScrollView(
       primary: false,
       slivers: [
@@ -27,8 +32,13 @@ class RegisterProfilePage extends BasePage {
                   size: ButtonSize.large,
                   text: "다음",
                   onPressed: () {
+                    MemberInfoEntity memberInfo =
+                        MemberInfoEntity(provider: extra!['provider'], email: extra!['email'], nickname: ref.read(nickTextProvider).text);
+
+                    ref.read(signInProvider.notifier).setMember(memberInfo);
                     ref.read(routerProvider).pushNamed(RoutePath.registerAccount);
                   },
+                  isEnabled: ref.watch(nickStatusProvider) == TextFieldStatus.normal && ref.watch(nickTextLengthProvider) > 2,
                 ),
                 SizedBox(height: 13.h),
               ],

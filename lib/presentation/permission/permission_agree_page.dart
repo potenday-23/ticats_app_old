@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:ticats/app/index.dart';
 import 'package:ticats/gen/assets.gen.dart';
 import 'package:ticats/presentation/index.dart';
@@ -34,7 +35,9 @@ class PermissionAgreePage extends BasePage {
           SizedBox(height: 36.h),
           TicatsCTAButton.contained(
             text: "동의하고 시작하기",
-            onPressed: () {
+            onPressed: () async {
+              await [Permission.camera, Permission.photos, Permission.notification].request();
+
               ref.read(routerProvider).push(RoutePath.selectEntertainment);
             },
           ),

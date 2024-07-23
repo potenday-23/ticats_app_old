@@ -88,7 +88,7 @@ class Router extends _$Router {
             GoRoute(
               path: RoutePath.registerProfile,
               name: RoutePath.registerProfile,
-              builder: (context, state) => const RegisterProfilePage(),
+              builder: (context, state) => RegisterProfilePage(extra: state.extra as Map<String, dynamic>),
             ),
           ],
         ),

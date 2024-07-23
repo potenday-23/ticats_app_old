@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:ticats/app/index.dart';
-
-final _inputTextProvider = StateProvider.family<String, int>((ref, id) => '');
 
 class TicatsUnderlineTextField extends HookConsumerWidget {
   TicatsUnderlineTextField({
@@ -12,6 +11,9 @@ class TicatsUnderlineTextField extends HookConsumerWidget {
     this.status = TextFieldStatus.normal,
     this.statusText = "",
     this.keyboardType = TextInputType.text,
+    this.isEnable = true,
+    this.maxLength,
+    this.onChanged,
     super.key,
   });
 
@@ -21,6 +23,11 @@ class TicatsUnderlineTextField extends HookConsumerWidget {
   final TextFieldStatus status;
   final String statusText;
   final TextInputType keyboardType;
+
+  final Function(String)? onChanged;
+
+  final bool isEnable;
+  final int? maxLength;
 
   final int id = UniqueKey().hashCode;
 
@@ -37,9 +44,10 @@ class TicatsUnderlineTextField extends HookConsumerWidget {
       children: [
         TextField(
           controller: controller,
-          onChanged: (value) => ref.read(_inputTextProvider(id).notifier).state = value,
+          onChanged: onChanged,
           decoration: InputDecoration(
             isDense: true,
+            enabled: isEnable,
             contentPadding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 10.h),
             hintText: hintText,
             hintStyle: AppTypeface.label16Semibold.copyWith(color: AppGrayscale.gray70),
@@ -47,7 +55,11 @@ class TicatsUnderlineTextField extends HookConsumerWidget {
             enabledBorder: const UnderlineInputBorder(borderSide: BorderSide(color: AppGrayscale.gray55)),
             focusedBorder: const UnderlineInputBorder(borderSide: BorderSide(color: AppGrayscale.gray55)),
           ),
-          style: AppTypeface.label16Semibold.copyWith(color: AppColor.black),
+          inputFormatters: [
+            FilteringTextInputFormatter.digitsOnly,
+            LengthLimitingTextInputFormatter(maxLength),
+          ],
+          style: AppTypeface.label16Semibold.copyWith(color: isEnable ? AppColor.black : AppGrayscale.gray70),
           keyboardType: keyboardType,
         ),
         SizedBox(height: 4.h),

@@ -22,10 +22,29 @@ showTicatsDialog(
   );
 }
 
+showTicatsAsyncDialog(
+  BuildContext context, {
+  required Widget child,
+  required VoidCallback onPressed,
+  text = "확인",
+  bool barrierDismissible = true,
+}) async {
+  await showDialog(
+    context: context,
+    barrierDismissible: barrierDismissible,
+    builder: (context) {
+      return Dialog(
+        child: _TicatsDialog(child, text: text, onPressed: onPressed),
+      );
+    },
+  );
+}
+
 showTicatsTwoButtonDialog(
   BuildContext context, {
   required Widget child,
   required VoidCallback onPressed,
+  VoidCallback? leftPressed,
   text = "확인",
   bool barrierDismissible = true,
 }) {
@@ -34,7 +53,26 @@ showTicatsTwoButtonDialog(
     barrierDismissible: barrierDismissible,
     builder: (context) {
       return Dialog(
-        child: _TicatsTwoButtonDialog(child, text: text, onPressed: onPressed),
+        child: _TicatsTwoButtonDialog(child, text: text, onPressed: onPressed, leftPressed: leftPressed),
+      );
+    },
+  );
+}
+
+showTicatsTwoButtonAsyncDialog(
+  BuildContext context, {
+  required Widget child,
+  required VoidCallback onPressed,
+  VoidCallback? leftPressed,
+  text = "확인",
+  bool barrierDismissible = true,
+}) async {
+  await showDialog(
+    context: context,
+    barrierDismissible: barrierDismissible,
+    builder: (context) {
+      return Dialog(
+        child: _TicatsTwoButtonDialog(child, text: text, onPressed: onPressed, leftPressed: leftPressed),
       );
     },
   );
@@ -128,11 +166,13 @@ class _TicatsTwoButtonDialog extends ConsumerWidget {
     this.child, {
     required this.text,
     required this.onPressed,
+    this.leftPressed,
   });
 
   final Widget child;
   final String text;
   final VoidCallback onPressed;
+  final VoidCallback? leftPressed;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -154,7 +194,7 @@ class _TicatsTwoButtonDialog extends ConsumerWidget {
               Flexible(
                 child: GestureDetector(
                   behavior: HitTestBehavior.translucent,
-                  onTap: () => ref.read(routerProvider).pop(),
+                  onTap: leftPressed ?? () => ref.read(routerProvider).pop(),
                   child: Container(
                     decoration: BoxDecoration(
                       color: AppGrayscale.gray70,

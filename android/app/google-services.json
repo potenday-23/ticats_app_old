@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "198185466920",
+    "project_id": "ticats-d62c5",
+    "storage_bucket": "ticats-d62c5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:198185466920:android:a8de4927d9f9fa93a9c91d",
+        "android_client_info": {
+          "package_name": "com.potatoes.ticats"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "198185466920-lrtorcpog8dd0p2kjli77d22em15e2uk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_RFWeIIjmJGRXOOKs7WLuXfjApzysiFo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "198185466920-lrtorcpog8dd0p2kjli77d22em15e2uk.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "198185466920-qsdpb0bi90vfj8jhvikfnladp5pmoc4h.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.potatoes.ticats"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

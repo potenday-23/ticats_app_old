@@ -4,21 +4,22 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:ticats/app/index.dart';
 
-final _inputTextProvider = StateProvider.family<String, int>((ref, id) => '');
-
 class TicatsBorderTextField extends HookConsumerWidget {
   TicatsBorderTextField({
     required this.hintText,
     required this.controller,
     this.status = TextFieldStatus.normal,
     this.statusText = "",
+    this.currentLength,
     this.maxLength,
     this.keyboardType = TextInputType.text,
+    required this.onChanged,
     super.key,
   });
 
   final String hintText;
   final TextEditingController controller;
+  final int? currentLength;
   final int? maxLength;
 
   final TextFieldStatus status;
@@ -26,12 +27,12 @@ class TicatsBorderTextField extends HookConsumerWidget {
 
   final TextInputType keyboardType;
 
+  final Function(String) onChanged;
+
   final int id = UniqueKey().hashCode;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final int textLength = ref.watch(_inputTextProvider(id)).length;
-
     Color textColor = status == TextFieldStatus.error
         ? AppColor.error
         : status == TextFieldStatus.info
@@ -49,7 +50,7 @@ class TicatsBorderTextField extends HookConsumerWidget {
       children: [
         TextField(
           controller: controller,
-          onChanged: (value) => ref.read(_inputTextProvider(id).notifier).state = value,
+          onChanged: onChanged,
           decoration: InputDecoration(
             filled: true,
             fillColor: bgColor,
@@ -70,7 +71,7 @@ class TicatsBorderTextField extends HookConsumerWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(statusText, style: AppTypeface.label12Regular.copyWith(color: textColor)),
-                Text('$textLength/$maxLength', style: AppTypeface.label14Medium.copyWith(color: textColor)),
+                Text('${controller.value.text.length}/$maxLength', style: AppTypeface.label14Medium.copyWith(color: textColor)),
               ],
             ),
           ),

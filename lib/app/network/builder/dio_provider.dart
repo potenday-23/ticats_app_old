@@ -22,7 +22,7 @@ Dio dio(DioRef ref) {
   );
 
   // Add interceptor for token handling
-  // dio.interceptors.add(TokenInterceptor(ref));
+  dio.interceptors.add(TokenInterceptor(ref));
 
   // Add interceptor for error handling
   dio.interceptors.add(ErrorInterceptor());
